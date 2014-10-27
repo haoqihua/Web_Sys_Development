@@ -1,0 +1,27 @@
+CREATE DATABASE student;
+USE student_info;
+CREATE TABLE student_info(
+id INT NOT NULL KEY AUTO_INCREMENT,
+username VARCHAR(20) NOT NULL,
+password VARCHAR(20) NOT NULL,
+realname VARCHAR(20) NOT NULL,
+email VARCHAR(20)
+rcsid VARCHAR(10) NOT NULL,
+time_session INT DEAFULT 30
+);
+
+
+
+//PHP part
+<?php
+    $conn = mysql_connect('','username','password');
+    $db= mysql_select_db('student');
+    $username =$_REQUEST['username'];
+    $realname =$_REQUEST['realname'];
+    $password =$_REQUEST['password'];
+    $email =$_REQUEST['email'];
+    $rcsid =$_REQUEST['rcsid'];
+
+
+    mysql_query("INSERT INTO student_info (username,password,realname,email,rcsid) VALUES ('$username','$password','$realname','$email','$rcsid')")
+?>
